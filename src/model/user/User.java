@@ -11,8 +11,8 @@ import model.Address;
 @EqualsAndHashCode(exclude = {"password"})
 @ToString(exclude = {"password"})
 public class User {
-    private final Address address;
-    private final String email;
+    private final String name;
     private final String password;
-    private final String username;
+    private final Address address;
+    private UserType type;
 }

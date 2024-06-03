@@ -26,7 +26,7 @@ public class Vault {
     public void store(User user, String newPassword) {
         boolean isSamePassword = newPassword == null || newPassword.equals(user.getPassword());
         credentials.put(
-                user.getUsername(),
+                user.getName(),
                 isSamePassword ?
                         user.getPassword() :
                         newPassword
