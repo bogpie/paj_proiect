@@ -15,11 +15,11 @@ import lombok.Data;
 @Builder
 @Data
 public class Address {
-    private String country;
-    private String city;
-    private String street;
-    private int streetNo;
-    private int zipCode;
-    private String telephoneNumber;
+    private final String country;
+    private final String city;
+    private final String street;
+    private final int streetNo;
+    private final int zipCode;
+    private final String telephoneNumber;
 
 }
