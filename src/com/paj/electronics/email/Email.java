@@ -19,7 +19,7 @@ public class Email {
 
     @Override
     public String toString() {
-        return "Email from " + from.getName() + " to " + to + " with title " + emailTitle
+        return "Email from " + from + " to " + to + " with title " + emailTitle
                 + ":\nand body:\n\t" + body;
     }
 }

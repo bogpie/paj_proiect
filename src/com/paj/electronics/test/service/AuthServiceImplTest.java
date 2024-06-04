@@ -39,7 +39,7 @@ public class AuthServiceImplTest {
     @Test
     @SneakyThrows
     public void testLogin_Success() {
-        assertTrue(authService.login("Gigel", "1234"));
+        assertTrue(authService.login("John", "1234"));
         assertTrue(authService.login("Ionel", "123"));
     }
 
@@ -48,7 +48,7 @@ public class AuthServiceImplTest {
     public void testLogin_Failed() {
         Exception exception = assertThrows(
                 InvalidCredentialsException.class,
-                () -> authService.login("Gigel", "124")
+                () -> authService.login("John", "124")
         );
         assertEquals("Invalid credentials", exception.getMessage());
         exception = assertThrows(InvalidCredentialsException.class, () -> authService.login("Ionel", "122"));
@@ -66,7 +66,7 @@ public class AuthServiceImplTest {
     @SneakyThrows
     public void testSingUp_ClientExists() {
         Exception exception = assertThrows(UserAlreadyExistsException.class, () -> authService.signUp(
-                "Gigel", "321", AddressFixtures.getAddress(), UserType.CLIENT)
+                "John", "321", AddressFixtures.getAddress(), UserType.CLIENT)
         );
         assertEquals("User already exists", exception.getMessage());
     }
@@ -91,7 +91,7 @@ public class AuthServiceImplTest {
     @SneakyThrows
     public void resetPasswordTest() {
         authService.resetPassword(client, "20");
-        assertTrue(authService.login("Gigel", "20"));
+        assertTrue(authService.login("John", "20"));
     }
 
     @Test

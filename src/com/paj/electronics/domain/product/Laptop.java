@@ -6,9 +6,10 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @Getter
 @Setter
+@EqualsAndHashCode(callSuper = true)
 public class Laptop extends Product {
     private boolean gSync;
     private boolean recommendedForGaming;
-    private int RAM;
+    private int ramSize;
     private double diagonal;
 }

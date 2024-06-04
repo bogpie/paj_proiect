@@ -20,11 +20,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ShopReportServiceImplTest {
     private ShopReportServiceImpl shopReportService;
-    private Product p1, p2;
-    private ShopService shopService;
+    private Product p1;
+    private Product p2;
     private Client client;
-    private ShoppingCart shoppingCart;
-    private OrderServiceImpl orderService;
     private Order order;
 
     @BeforeEach
@@ -40,12 +38,12 @@ public class ShopReportServiceImplTest {
 
         client = ClientFixtures.getClient();
         shop.addClient(client);
-        shoppingCart = new ShoppingCart();
+        ShoppingCart shoppingCart = new ShoppingCart();
         shoppingCart.addProductToCart(p1);
         shoppingCart.addProductToCart(p2);
-        orderService = new OrderServiceImpl();
+        OrderServiceImpl orderService = new OrderServiceImpl();
         client.setCart(shoppingCart);
-        shopService = new ShopServiceImpl(shop);
+        ShopService shopService = new ShopServiceImpl(shop);
         order = orderService.createOrder(client, shoppingCart);
         shopReportService = new ShopReportServiceImpl(shop);
     }
@@ -64,8 +62,8 @@ public class ShopReportServiceImplTest {
 
     @Test
     public void getClientsByCountryTest() {
-        Map<String, Set<Client>> expectedClientsByCity = Map.of("Romania", Set.of(client));
-        assertEquals(expectedClientsByCity, shopReportService.getClientsByCountry());
+        Map<String, Set<Client>> expectedClientsByCountry = Map.of("Romania", Set.of(client));
+        assertEquals(expectedClientsByCountry, shopReportService.getClientsByCountry());
     }
 
     @Test

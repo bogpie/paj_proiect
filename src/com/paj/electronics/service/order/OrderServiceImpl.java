@@ -3,6 +3,8 @@ package com.paj.electronics.service.order;
 import com.paj.electronics.domain.*;
 import com.paj.electronics.domain.product.Product;
 import com.paj.electronics.domain.user.Client;
+import com.paj.electronics.domain.user.Supplier;
+import com.paj.electronics.domain.user.User;
 import com.paj.electronics.email.Email;
 import com.paj.electronics.email.EmailService;
 import com.paj.electronics.exceptions.EmailServiceException;
@@ -21,7 +23,7 @@ public class OrderServiceImpl implements OrderService {
     private EmailService nullableEmailService = null;
     @Getter
     private int emailedClients;
-    private static final Client shopNoReply = new Client("Shop-no-reply", "shop-no-reply", null);
+    private static final User shopNoReply = new Supplier("Shop-no-reply", "shop-no-reply", null);
 
     public OrderServiceImpl() {
         nullableEmailService = new EmailService();
@@ -50,14 +52,14 @@ public class OrderServiceImpl implements OrderService {
                 .totalCost(shoppingCart.getTotalCost())
                 .orderStatus(OrderStatus.CREATED)
                 .orderDate(Date.from(Instant.now()))
-                .boughtProducts(shoppingCart.getCartItems()
+                .boughtProducts(shoppingCart.getItems()
                         .stream()
-                        .collect(Collectors.toMap(CartItem::getProduct, CartItem::getQuantity))
+                        .collect(Collectors.toMap(Item::getProduct, Item::getQuantity))
                 )
                 .build();
 
         client.getOrderHistory().add(order);
-        shoppingCart.getCartItems().forEach(
+        shoppingCart.getItems().forEach(
                 item -> item.getProduct().setStockUnits(item.getProduct().getStockUnits() - item.getQuantity())
         );
         shoppingCart.clearShoppingCart();

@@ -11,13 +11,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ShoppingCartTest {
     private ShoppingCart shoppingCart;
-    private Product p1, p2;
+    private Product p1;
 
     @BeforeEach
     public void setUp() {
         shoppingCart = new ShoppingCart();
         p1 = ProductFixtures.getLaptopProduct();
-        p2 = ProductFixtures.getMobileProduct();
+        Product p2 = ProductFixtures.getMobileProduct();
 
         shoppingCart.addProductToCart(p1);
         shoppingCart.addProductToCart(p2);
@@ -47,7 +47,7 @@ public class ShoppingCartTest {
     }
 
     @Test
-    public void updateProductQuantityTest_InsufficientStockUnits() {
+    public void updateProductQuantityTestInsufficientStockUnitsTest() {
         Exception exception = assertThrows(InsufficientStockUnitsException.class, () -> shoppingCart.updateProductQuantity(p1, 100));
         assertEquals("Insufficient units of ASUS ROG Strix in stock.\nAvailable units: 50", exception.getMessage(), "Exceptions don't match");
     }

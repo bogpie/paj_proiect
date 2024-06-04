@@ -1,10 +1,6 @@
 package com.paj.electronics.domain.user;
 
 
-import com.paj.electronics.domain.Shop;
-import com.paj.electronics.domain.product.Product;
-import com.paj.electronics.domain.user.Address;
-import com.paj.electronics.domain.user.User;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor

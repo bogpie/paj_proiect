@@ -5,7 +5,7 @@ import com.paj.electronics.domain.user.Client;
 
 public class ClientFixtures {
     public static Client getClient() {
-        return new Client("Gigel", "1234", Address.builder()
+        return new Client("John", "1234", Address.builder()
                 .city("Bucharest")
                 .street("Tineretului")
                 .country("Romania")

@@ -9,7 +9,7 @@ import lombok.experimental.SuperBuilder;
 @ToString
 @EqualsAndHashCode(exclude = "stockUnits")
 public abstract class Product {
-    private String SKU;
+    private String id;
     private Category category;
     private String name;
     private double price;
